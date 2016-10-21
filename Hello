@@ -1,0 +1,7 @@
+using UnityEngine;
+using System.Collections;
+
+public class HoverPad : MonoBehavior
+{
+public float hoverForce;
+void OnTriggerStay (Collide other)
