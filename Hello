@@ -5,3 +5,7 @@ public class HoverPad : MonoBehavior
 {
 public float hoverForce;
 void OnTriggerStay (Collide other)
+{
+other.rigidbody.AddForce(Vector3.up * hoverForce, ForceMode.Acceleration);
+}
+}
