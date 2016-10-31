@@ -3,11 +3,15 @@ using System.Collections;
 
 public class SegmentPlacingScript : MonoBehaviour {
 
+	//refernce that the object needs to make
 	public GameObject segmentPrefab;
+	//the beginning of the of the reference
 	private Vector3 startDragPosition;
-	private bool draging = false;
-
+	//boolean that holds whether a piece is being expanded
+	private bool dragging = false;
+	//the private segment
 	private GameObject segment = null;
+	//boolean that holds if the app is in adding mode
 	public bool isAddingMode = true;
 
 
@@ -19,7 +23,7 @@ public class SegmentPlacingScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isAddingMode) {
-			if (draging) {
+			if (dragging) {
 				DisplayMember ();
 			}
 		} else {
@@ -27,6 +31,7 @@ public class SegmentPlacingScript : MonoBehaviour {
 		}
 	}
 
+	// displays the placed member
 	void DisplayMember()
 	{
 
@@ -71,13 +76,14 @@ public class SegmentPlacingScript : MonoBehaviour {
 		);
 	}
 
+	//call when the mouse is being clicked
 	void OnMouseDown()
 	{
 		if (!isAddingMode) {
 			Destroy (this.gameObject);
 			return;
 		}
-		if (!draging) {
+		if (!dragging) {
 			segment = Instantiate (segmentPrefab);
 			Vector3 mousePositionOnWord = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			segment.transform.position = new Vector3 (
@@ -86,14 +92,15 @@ public class SegmentPlacingScript : MonoBehaviour {
 				this.gameObject.transform.position.z
 			);
 			startDragPosition = segment.transform.position;
-			draging = true;
+			dragging = true;
 		} 
 
 	}
+	// called when the mouse isn't being clicked
 	void OnMouseUp(){
 		if (!isAddingMode)
 			return;
-		draging = false;
+		dragging = false;
 		FixedJoint2D j = segment.GetComponent<FixedJoint2D> ();
 		j.connectedBody = this.GetComponent<Rigidbody2D> ();
 	}
