@@ -3,10 +3,13 @@ using System.Collections;
 
 public class ForceDisplayScript : MonoBehaviour {
 
+	// the joint of the tower
 	public FixedJoint2D joint;
+	// the component that handles the physics
 	public Rigidbody2D rigidbody;
 	//Transform before simulating
 	private Transform initialTransform;
+	// variable that holds whether or not the tower is being simulated
 	private bool b_simulating = false;
 
 
@@ -18,8 +21,6 @@ public class ForceDisplayScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-
-
 	void Update () {
 		if (b_simulating) {
 			//reads force->ray cast to display it
