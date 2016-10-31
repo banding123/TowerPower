@@ -4,8 +4,11 @@ using UnityEngine.UI;
 
 public class DeleteButtonScript : MonoBehaviour {
 
+	// the weight of the tower
 	public GameObject weight;
+	// the button that turns on delete mode
 	public Button btn;
+	// an array that holds all the segments
 	public SegmentPlacingScript[] allSegments;
 
 	// Use this for initialization
@@ -15,6 +18,7 @@ public class DeleteButtonScript : MonoBehaviour {
 
 	}
 
+	// whenever the button is pressed, it moves into delete mode
 	void TaskOnListener(){
 
 		allSegments = FindObjectsOfType<SegmentPlacingScript> ();
