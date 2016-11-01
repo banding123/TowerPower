@@ -3,11 +3,15 @@ using System.Collections;
 
 public class SegmentPlacingScript : MonoBehaviour {
 
+	// the reference the tower must draw for a member
 	public GameObject segmentPrefab;
+	// the beginning position of the Prefab
 	private Vector3 startDragPosition;
+	// whether the mouse is being dragged
 	private bool draging = false;
-
+	// segment that will be drawn
 	private GameObject segment = null;
+	// whether the app is in adding mode
 	public bool isAddingMode = true;
 
 
@@ -26,7 +30,7 @@ public class SegmentPlacingScript : MonoBehaviour {
 			//nothing :D
 		}
 	}
-
+	// draws the member
 	void DisplayMember()
 	{
 
@@ -70,7 +74,7 @@ public class SegmentPlacingScript : MonoBehaviour {
 			((mousePositionOnWord.z + startDragPosition.z)/2)
 		);
 	}
-
+	// called when the mouse is clicked
 	void OnMouseDown()
 	{
 		if (!isAddingMode) {
@@ -90,6 +94,7 @@ public class SegmentPlacingScript : MonoBehaviour {
 		} 
 
 	}
+	// called when the mouse is not being clicked
 	void OnMouseUp(){
 		if (!isAddingMode)
 			return;
